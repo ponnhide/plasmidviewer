@@ -5,7 +5,7 @@ If you want to do such operations, please use [QUEEN](https://github.com/yachiel
 (In fact, this library is implemented based on the visualization function of [QUEEN](https://github.com/yachielab/QUEEN)) 
 
 ## Installation
-You can install this library using the following single command:
+You can install this library using the following single command:  
 `pip install git+https://github.com/ponnhide/plasmidviewer.git`
 
 ## Example code
