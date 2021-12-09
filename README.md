@@ -4,6 +4,10 @@ This library provides only the function to visualize circular plasmids and doesn
 If you want to do such operations, please use [QUEEN](https://github.com/yachielab/QUEEN), which I have recently developed.
 (In fact, this library is implemented based on the visualization function of [QUEEN](https://github.com/yachielab/QUEEN)) 
 
+## Installation
+You can install this library using the following single command:
+`pip install git+https://github.com/ponnhide/plasmidviewer.git`
+
 ## Example code
 
 ```python
