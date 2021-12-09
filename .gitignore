@@ -1,0 +1,10 @@
+/*/*/example_db/
+/*/*/*.maf
+/*/*/*.gbff
+*.pyc
+*.swp
+/.ipynb_checkpoints/
+/__pycache__/
+/build/
+/dist/
+/plasmidviewer.egg-info/
