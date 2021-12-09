@@ -1,4 +1,4 @@
-#Plasmidviewer
+# Plasmidviewer
 Plasmidviewer is a Python library to visualize plasmid maps from GenBank.
 This library provides only the function to visualize circular plasmids and doesn't provide functions to edit nucleotides and sequence features.
 If you want to do such operations, please use [QUEEN](https://github.com/yachielab/QUEEN), which I have recently developed.
@@ -44,4 +44,4 @@ If you want to do such operations, please use [QUEEN](https://github.com/yachiel
 ```
 
 ## Example images
-<img src="img/example.png" width="800x800">
+<img src="img/example.png" width="600x600">
