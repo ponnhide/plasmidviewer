@@ -43,7 +43,7 @@ You can install this library using the following single command:
     fig, ax = pv.visualize(record, feature_list=feats, edgecolor=edgecolors, title="lentiCas9-EGFP")
     fig.savefig("test2.pdf") 
     
-    fig, ax = pv.visualize(record, feature_list=feats, facecolor=facecolors, edgecolor=edgecolors, labelcolor=labelcolors, title="lentiCas9-EGFP", tick_interval=1000)
+    fig, ax = pv.visualize(record, feature_list=feats, facecolor=facecolors, edgecolor=edgecolors, labelcolor=labelcolors, title="lentiCas9-EGFP", inner_diameter=500, tick_interval=1000)
     fig.savefig("test3.pdf") 
 ```
 
