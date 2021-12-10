@@ -40,7 +40,7 @@ feature_color_dict["misc_feature"]  = list(zip(pastel, colorblind))
 feature_color_dict["CDS"]           = list(zip(pastel, colorblind))
 misc_colors                         = list(zip(pastel, colorblind))
 
-def _map_feat(fig, ax, ax2, feats, length, labels=None, labelcolors=None, facecolors=None, edgecolors=None, head_length=np.pi * 0.035, enlarge=1.0, format=1, bottom=300, fontsize=8, display_label=2, display_axis=True, tick_space="auto"):
+def _map_feat(fig, ax, ax2, feats, length, labels=None, labelcolors=None, facecolors=None, edgecolors=None, head_length=None, enlarge=1.0, format=1, bottom=300, fontsize=8, display_label=2, display_axis=True, tick_space="auto"):
     if format == 0 or format == 1:
         outer    = 55 * 1.2
         inner    = 42 * 1.2
@@ -49,7 +49,11 @@ def _map_feat(fig, ax, ax2, feats, length, labels=None, labelcolors=None, faceco
         elif bottom is None and format == 0:
             bottom_h = 350
         else:
-            bottom_h = bottom 
+            bottom_h = bottom
+        
+        if head_length is None:
+            head_length = 0.035 * np.pi * (350**0.3/(bottom_h**0.3))
+
         lane_h   = 60 * 1.2
         normal_w = 1000
         if fontsize is None:
@@ -153,9 +157,9 @@ def _map_feat(fig, ax, ax2, feats, length, labels=None, labelcolors=None, faceco
         if abs(ge-gs) < head_length * 1.2:
             hl  = abs(ge-gs)
         else:
-            hl  = head_length * bottom_h/(y*lane_h+bottom_h)
+            hl  = head_length * 350/(y*lane_h+bottom_h)
         
-        mg  = margin * bottom_h/(y*lane_h+bottom_h)
+        mg  = margin * 350/(y*lane_h+bottom_h)
         if format == 0: 
             w, x, fc, ec = width, middle, facecolor, edgecolor
             if gs < ge: 
@@ -298,8 +302,8 @@ def _map_feat(fig, ax, ax2, feats, length, labels=None, labelcolors=None, faceco
             if abs(ge-gs) < head_length * 1.2:
                 hl  = abs(ge-gs)
             else:
-                hl  = head_length * bottom_h/(y*lane_h+bottom_h)
-            mg = margin * bottom_h/(y*lane_h+bottom_h)
+                hl  = head_length * 350/(y*lane_h+bottom_h)
+            mg = margin * 350/(y*lane_h+bottom_h)
                    
             new_new_pos_list = []
             for pos_info in new_pos_list:
@@ -714,8 +718,9 @@ def _map_feat(fig, ax, ax2, feats, length, labels=None, labelcolors=None, faceco
         fig.set_size_inches(6 * ylim/fig_width, 6 * ylim/fig_width)
     return ax, y_list, ty_list, fig_width, ylim, bottom_h
 
-def visualize(record, feature_list=None, fontsize=8, label_list=None, labelcolor=None, facecolor=None, edgecolor=None, display_axis=True, title_visible=True, title=None, tick_interval="auto", format=0, bottom=None, fig=None):
+def visualize(record, feature_list=None, fontsize=8, label_list=None, labelcolor=None, facecolor=None, edgecolor=None, display_axis=True, title_visible=True, title=None, tick_interval="auto", format=0, inner_diameter=None, fig=None):
     tick_space = tick_interval
+    bottom = inner_diameter
     if title is None:
         titlename = record.id
     else:
@@ -875,6 +880,6 @@ if __name__ == "__main__":
     fig, ax = visualize(record, feature_list=feats, edgecolor=edgecolors, title="lentiCas9-EGFP")
     fig.savefig("test2.pdf") 
     
-    fig, ax = visualize(record, feature_list=feats, facecolor=facecolors, edgecolor=edgecolors, labelcolor=labelcolors, title="lentiCas9-EGFP", tick_interval=1000)
+    fig, ax = visualize(record, feature_list=feats, facecolor=facecolors, edgecolor=edgecolors, labelcolor=labelcolors, title="lentiCas9-EGFP", inner_diameter=500, tick_interval=1000)
     fig.savefig("test3.pdf") 
 
